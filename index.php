@@ -4,6 +4,10 @@ session_start();
 
 ob_start();
 ob_clean();
+if (!isset($_SESSION['EMAIL'])) {
+    header('location:auth/login.php');
+    exit;
+}
 
 ?>
 
@@ -20,7 +24,7 @@ ob_clean();
         rel="icon"
         href="assets/img/kaiadmin/favicon.ico"
         type="image/x-icon" />
-
+    <link rel="icon" type="image/x-icon" href="assets/assets/img/favicon/favicon.ico" />
     <!-- Fonts and icons -->
     <script src="assets/dashboard/assets/js/plugin/webfont/webfont.min.js"></script>
     <script>

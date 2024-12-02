@@ -5,16 +5,17 @@ if (isset($_POST['simpan'])) {
     $id_customer = $_POST['id_customer'];
     $no_transaksi = $_POST['no_transaksi'];
     $tanggal_laundry = $_POST['tanggal_laundry'];
+    $laundry_pengembalian = $_POST['laundry_pengembalian'];
 
-    $id_paket = $_POST['id_paket'];
+    $id_paket = $_POST['id_service'];
     // INSERT KE TABLE TRANS_ORDER
-    $insertTransOrder = mysqli_query($koneksi, "INSERT INTO trans_order(id_customer, order_code, order_date) VALUES ('$id_customer','$no_transaksi','$tanggal_laundry')");
+    $insertTransOrder = mysqli_query($koneksi, "INSERT INTO trans_order(id_customer, order_code, order_date, order_end) VALUES ('$id_customer','$no_transaksi','$tanggal_laundry','$laundry_pengembalian')");
 
     $last_id = mysqli_insert_id($koneksi);
     // INSERT KE TABLE TRANS_DETAIL_ORDER
     // MENGAMBIL NILAI LEBIH DARI SATU, LOOPING DENGAN FOREACH
     foreach ($id_paket as $key => $value) {
-        $id_paket = array_filter(array: $_POST['id_paket']);
+        $id_paket = array_filter($_POST['id_service']);
         $qty = array_filter($_POST['qty']);
         $id_paket = $_POST['id_service'][$key];
         $qty = $_POST['qty'][$key];
@@ -28,6 +29,8 @@ if (isset($_POST['simpan'])) {
 
         if ($id_paket > 0) {
             $insertTransDetail = mysqli_query($koneksi, "INSERT INTO trans_order_detail (id_order, id_service, qty, subtotal) VALUES ('$last_id','$id_paket','$qty','$subtotal')");
+            // print_r($insertTransDetail);
+            // die;
         }
     }
 
@@ -37,10 +40,14 @@ if (isset($_POST['simpan'])) {
 
 $queryCustomer = mysqli_query($koneksi, "SELECT * FROM customer");
 $id = isset($_GET['detail']) ? $_GET['detail'] : '';
-$queryTransDetail = mysqli_query($koneksi, "SELECT customer.customer_name,customer.phone, customer.adress, trans_order.order_code, trans_order.order_date, trans_order.status, type_of_service.service_name, type_of_service.price, trans_order_detail.* FROM trans_order_detail LEFT JOIN type_of_service ON type_of_service.id = trans_order_detail.id_service LEFT JOIN trans_order ON trans_order.id = trans_order_detail.id_order LEFT JOIN customer ON customer.id = trans_order.id_customer WHERE trans_order_detail.id_order = '$id'");
+$queryTransDetail = mysqli_query($koneksi, "SELECT customer.customer_name,customer.phone, customer.adress, trans_order.order_code, trans_order.order_date,trans_order.order_end, trans_order.status, type_of_service.service_name, type_of_service.price, trans_order_detail.* FROM trans_order_detail LEFT JOIN type_of_service ON type_of_service.id = trans_order_detail.id_service LEFT JOIN trans_order ON trans_order.id = trans_order_detail.id_order LEFT JOIN customer ON customer.id = trans_order.id_customer WHERE trans_order_detail.id_order = '$id'");
+// $data = mysqli_fetch_assoc($queryTransDetail);
+// die;
 $row = [];
 while ($dataTrans = mysqli_fetch_assoc($queryTransDetail)) {
     $row[] = $dataTrans;
+    //     print_r($row);
+    //     die;
 }
 
 // echo "<pre>";
@@ -121,6 +128,11 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                 <tr>
                                     <th>Tanggal Laundry</th>
                                     <td><?php echo $row[0]['order_date'] ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Tanggal Laundry pengembalian</th>
+                                    <td><?php echo $row[0]['order_end'] ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -205,6 +217,10 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                     </div>
                                 <?php endif; ?>
                                 <div class="mb-3 row">
+                                    <div class="col-sm-6 mb-4">
+                                        <label for="">No. Invoice</label>
+                                        <input type="text" class="form-control" name="no_transaksi" id="" placeholder="kode transaksi" value="#<?php echo $code ?>" readonly required>
+                                    </div>
                                     <div class="col-sm-12 mb-4">
                                         <label for="">Pelanggan</label>
                                         <select class="form-control" name="id_customer" id="">
@@ -214,13 +230,14 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="col-sm-6 mb-4">
-                                        <label for="">No. Invoice</label>
-                                        <input type="text" class="form-control" name="no_transaksi" id="" placeholder="Masukan Nama anda" value="#<?php echo $code ?>" readonly required>
-                                    </div>
+
                                     <div class="col-sm-6 mb-4">
                                         <label for="">Tanggal Laundry</label>
                                         <input type="date" class="form-control" name="tanggal_laundry" id="" placeholder="Masukan tanggal laundry anda" value="<?php echo isset($_GET['edit']) ? $rowEdit['name'] : '' ?>" required>
+                                    </div>
+                                    <div class="col-sm-6 mb-4">
+                                        <label for="">Tanggal pengembalian</label>
+                                        <input type="date" class="form-control" name="laundry_pengembalian" id="" placeholder="Masukan tanggal laundry anda" value="<?php echo isset($_GET['edit']) ? $rowEdit['name'] : '' ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -241,7 +258,7 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                             <label for="">Paket</label>
                                         </div>
                                         <div class="col-sm-9 mb-4">
-                                            <select class="form-control" name="id_paket[]" id="">
+                                            <select class="form-control" name="id_service[]" id="">
                                                 <option value="">--Pilih Paket--</option>
                                                 <?php foreach ($rowPaket as $key => $value) { ?>
                                                     <option value="<?php echo $value['id'] ?>"><?php echo $value['service_name'] ?></option>
@@ -260,7 +277,7 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                             <label for="">Paket</label>
                                         </div>
                                         <div class="col-sm-9 mb-4">
-                                            <select class="form-control" name="id_paket[]" id="">
+                                            <select class="form-control" name="id_service[]" id="">
                                                 <option value="">--Pilih Paket--</option>
                                                 <?php foreach ($rowPaket as $key => $value) { ?>
                                                     <option value="<?php echo $value['id'] ?>"><?php echo $value['service_name'] ?></option>

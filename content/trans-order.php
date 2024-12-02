@@ -7,7 +7,7 @@ $queryTransOrder = mysqli_query($koneksi, "SELECT customer.customer_name, trans_
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $delete = mysqli_query($koneksi, "DELETE FROM trans_order WHERE id = '$id'");
-    header("Location:?pg=trans_order&hapus=berhasil");
+    header("Location:?pg=trans-order&hapus=berhasil");
 }
 ?>
 
@@ -33,6 +33,7 @@ if (isset($_GET['delete'])) {
                                 <th>No Invoice</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Tanggal Laundry</th>
+                                <th>Tanggal Pengembalian</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -46,6 +47,7 @@ if (isset($_GET['delete'])) {
                                     <td><?php echo $row_trans['order_code'] ?></td>
                                     <td><?php echo $row_trans['customer_name'] ?></td>
                                     <td><?php echo $row_trans['order_date'] ?></td>
+                                    <td><?php echo $row_trans['order_end'] ?></td>
                                     <td>
                                         <?php
                                         echo changeStatus($row_trans['status'])
@@ -58,7 +60,7 @@ if (isset($_GET['delete'])) {
                                         <a target="_blank" href="?pg=print.php&id=<?php echo $row_trans['id'] ?>">
                                             <span class="tf-icon btn btn-success bx bx-printer"></span>
                                         </a> |
-                                        <a onclick="return confirm('Apakah antum yakin akan menghapus data ini??')" href="?pg=trans_order&delete=<?php echo $row_trans['id'] ?>">
+                                        <a onclick="return confirm('Apakah antum yakin akan menghapus data ini??')" href="?pg=trans-order&delete=<?php echo $row_trans['id'] ?>">
                                             <span class="tf-icon btn btn-danger bx bx-trash bx-12px"></span>
                                         </a>
                                     </td>
