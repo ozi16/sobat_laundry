@@ -1,0 +1,49 @@
+<div class="mb-3 row">
+                                    <div class="row mb-4">
+                                        <div class="col-sm-3 mb-4">
+                                            <label for="">Paket</label>
+                                        </div>
+                                        <div class="col-sm-9 mb-4">
+                                            <select class="form-control" name="id_service[]" id="">
+                                                <option value="">--Pilih Paket--</option>
+                                                <?php foreach ($rowPaket as $key => $value) { ?>
+                                                    <option value="<?php echo $value['id'] ?>"><?php echo $value['service_name'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 mb-4">
+                                            <label for="">QTY</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="qty[]" id="" placeholder="Masukan Quantity">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col-sm-3 mb-4">
+                                            <label for="">Paket</label>
+                                        </div>
+                                        <div class="col-sm-9 mb-4">
+                                            <select class="form-control" name="id_service[]" id="">
+                                                <option value="">--Pilih Paket--</option>
+                                                <?php foreach ($rowPaket as $key => $value) { ?>
+                                                    <option value="<?php echo $value['id'] ?>"><?php echo $value['service_name'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 mb-4">
+                                            <label for="">QTY</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="qty[]" id="" placeholder="Masukan Quantity">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-6">
+                                        <button type="submit" class=" btn btn-primary" name="<?php echo isset($_GET['edit']) ? 'edit' : 'simpan' ?>">Simpan</button>
+                                    </div>
+                                </div>
+
+
+pr oji 
+1. total price, order_pay, order_change masi 0

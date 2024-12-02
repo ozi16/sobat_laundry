@@ -38,63 +38,65 @@
                     </a>
 
                 </li>
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                    <h4 class="text-section">Master Data</h4>
-                </li>
-                <li class="nav-item">
-                    <a href="?pg=user">
-                        <p>User</p>
+                <?php if ($_SESSION['id_level'] == 7) { ?>
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Master Data</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?pg=user">
+                            <p>User</p>
 
-                    </a>
+                        </a>
 
-                </li>
-                <li class="nav-item">
-                    <a href="?pg=level">
-                        <p>Level</p>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?pg=level">
+                            <p>Level</p>
 
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="?pg=customer">
-                        <p>Customer</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?pg=customer">
+                            <p>Customer</p>
 
-                    </a>
+                        </a>
 
-                </li>
-                <li class="nav-item">
-                    <a href="?pg=paket">
-                        <p>Paket</p>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?pg=paket">
+                            <p>Paket</p>
 
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if ($_SESSION['id_level'] == 7 or $_SESSION['id_level'] == 8) { ?>
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Data Transaksi</h4>
+                    </li>
 
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                    <h4 class="text-section">Data Transaksi</h4>
-                </li>
+                    <li class="nav-item">
+                        <a href="?pg=trans-order">
+                            <p>Transksi</p>
 
-                <li class="nav-item">
-                    <a href="?pg=trans-order">
-                        <p>Transksi</p>
-
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="?pg=trans-pick">
-                        <p>Pengambilan Laundry</p>
-
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="">
-                        <p>Laporan</p>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?pg=trans-pick">
+                            <p>Pengambilan Laundry</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?pg=laporan">
+                            <p>Laporan</p>
+                        </a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

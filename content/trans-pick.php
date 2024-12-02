@@ -17,7 +17,7 @@ if (isset($_GET['delete'])) {
 <div class="row">
     <div class="col-sm-12">
         <div class="card mt-5">
-            <div class="card-header">Transaksi Laundry</div>
+            <div class="card-header">Pengambilan Laundry</div>
             <div class="card-body">
                 <?php if (isset($_GET['hapus'])) : ?>
                     <div class="alert alert-success" role="alert">
@@ -35,6 +35,7 @@ if (isset($_GET['delete'])) {
                                 <th>No Invoice</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Tanggal Laundry</th>
+                                <th>Tanggal Pengembalian</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -48,6 +49,7 @@ if (isset($_GET['delete'])) {
                                     <td><?php echo $row_trans['order_code'] ?></td>
                                     <td><?php echo $row_trans['customer_name'] ?></td>
                                     <td><?php echo $row_trans['order_date'] ?></td>
+                                    <td><?php echo $row_trans['order_end'] ?></td>
                                     <td>
                                         <?php
                                         echo changeStatus($row_trans['status'])

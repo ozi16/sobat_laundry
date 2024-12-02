@@ -14,6 +14,9 @@ if (isset($_POST['simpan_transaksi'])) {
     // ubah status order jadi 1 / sudah di ambil
     $updateTransOrder = mysqli_query($koneksi, "UPDATE trans_order SET status = 1 WHERE id = '$id_order'");
 
+    // menghitung pembayaran
+
+
     header("Location:?pg=trans_order&tambah=berhasil");
 }
 
@@ -74,7 +77,7 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                     <h5>Pengambilan Laundry <?php echo $row[0]['customer_name'] ?></h5>
                                 </div>
                                 <div class="col-sm-6" align="right">
-                                    <a href="?pg=trans_order" class="btn btn-secondary">Kembali</a>
+                                    <a href="?pg=trans-order" class="btn btn-secondary">Kembali</a>
                                     <a href="?pg=print&id=<?php echo $id ?>" class="btn btn-success">Print</a>
                                     <a href="" class="btn btn-warning">Ambil Cucian</a>
                                 </div>
