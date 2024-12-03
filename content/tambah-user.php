@@ -71,7 +71,7 @@ $queryLevel = mysqli_query($koneksi, "SELECT * FROM level");
                     <div class="mb-3 row">
                         <div class="col-sm-6 mb-4">
                             <label for="">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="name" id="" placeholder="Masukan Nama anda" value="<?php echo isset($_GET['edit']) ? $rowEdit['nama'] : '' ?>" required>
+                            <input type="text" class="form-control" name="name" id="" placeholder="Masukan Nama anda" value="<?php echo isset($_GET['edit']) ? $rowEdit['name'] : '' ?>" required>
                         </div>
 
                         <div class="col-sm-6 mb-4">

@@ -86,11 +86,13 @@
 
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="?pg=trans-pick">
                             <p>Pengambilan Laundry</p>
                         </a>
-                    </li>
+                    </li> -->
+                <?php } ?>
+                <?php if ($_SESSION['id_level'] == 9) { ?>
                     <li class="nav-item">
                         <a href="?pg=laporan">
                             <p>Laporan</p>

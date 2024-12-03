@@ -139,7 +139,7 @@ if (isset($_POST['simpan_transaksi'])) {
 }
 
 
-$queryPaketDetail = mysqli_query($koneksi, "SELECT customer.customer_name, customer.phone, customer.adress, trans_order.order_code, trans_order.order_date, trans_order.status, trans_order.id_customer, type_of_service.service_name, type_of_service.price, trans_order_detail.* FROM trans_order_detail LEFT JOIN type_of_service ON trans_order_detail.id_service = type_of_service.id LEFT JOIN trans_order ON trans_order.id = trans_order_detail.id_order LEFT JOIN customer ON customer.id = trans_order.id_customer");
+$queryPaketDetail = mysqli_query($koneksi, "SELECT customer.customer_name, customer.phone, customer.adress, trans_order.order_code, trans_order.order_date, trans_order.status, trans_order.id_customer, type_of_service.service_name, type_of_service.price, trans_order_detail.* FROM trans_order_detail LEFT JOIN type_of_service ON trans_order_detail.id_service = type_of_service.id LEFT JOIN trans_order ON trans_order.id = trans_order_detail.id_order LEFT JOIN customer ON customer.id = trans_order.id_customer WHERE trans_order_detail.id_order = '$id'");
 // $rowPaketDetail = mysqli_fetch_assoc($queryPaketDetail);
 // echo "<pre>";
 $rowPickup = [];
@@ -161,7 +161,7 @@ if (isset($_POST['ambil'])) {
     // ubah status order
     $updateTransaksiStatus = mysqli_query($koneksi, "UPDATE trans_order SET status = 1 WHERE id = '$id_order'");
 
-    header('location: ?pg=trans_order.php?insert-berhasil');
+    header('location:?pg=trans-order&insert-berhasil');
 }
 
 ?>
@@ -190,7 +190,7 @@ if (isset($_POST['ambil'])) {
                                 </div>
                                 <div class="col-sm-6" align="right">
                                     <a href="?pg=trans-order" class="btn btn-secondary">Kembali</a>
-                                    <a href="?pg=print.php&id=<?php echo $row[0]['id_order'] ?>" class="btn btn-success">Print</a>
+                                    <a href="?pg=print&id=<?php echo $row[0]['id_order'] ?>" class="btn btn-success">Print</a>
 
                                 </div>
                             </div>

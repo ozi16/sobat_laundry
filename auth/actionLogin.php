@@ -47,7 +47,7 @@ if (isset($_POST['login'])) {
         $rowUser = mysqli_fetch_assoc($queryLogin);
         if ($rowUser['password'] == $password) {
             $_SESSION['EMAIL'] = $rowUser['email'];
-            $_SESSION['name'] = $rowUser[' '];
+            $_SESSION['NAME'] = $rowUser['name '];
             $_SESSION['ID'] = $rowUser['id'];
             $_SESSION['id_level'] = $rowUser['id_level'];
             header('location:../index.php?login=berhasil');

@@ -17,7 +17,7 @@ if (isset($_POST['simpan_transaksi'])) {
     // menghitung pembayaran
 
 
-    header("Location:?pg=trans_order&tambah=berhasil");
+    header("Location:?pg=trans-order&tambah=berhasil");
 }
 
 $queryCustomer = mysqli_query($koneksi, "SELECT * FROM customer");

@@ -34,7 +34,7 @@ $queryTransOrder = mysqli_query($koneksi, $query);
 <div class="row">
     <div class="col-sm-12">
         <div class="card mt-5">
-            <div class="card-header">Transaksi Laundry</div>
+            <div class="card-header">Laporan Laundry</div>
             <div class="card-body">
                 <?php if (isset($_GET['hapus'])) : ?>
                     <div class="alert alert-success" role="alert">
@@ -42,7 +42,7 @@ $queryTransOrder = mysqli_query($koneksi, $query);
                     </div>
                 <?php endif; ?>
                 <!-- FILTER DATA TRANSAKSI -->
-                <form action="" method="get">
+                <!-- <form action="" method="get">
                     <div class="mb-3 row">
                         <div class="col-sm-3">
                             <label for="">Tanggal dari</label>
@@ -64,7 +64,7 @@ $queryTransOrder = mysqli_query($koneksi, $query);
                             <button name="filter" class="btn btn-primary">Tampilkan Laporan</button>
                         </div>
                     </div>
-                </form>
+                </form> -->
                 <div class="table">
                     <table class="table table-responsive table-bordered">
                         <thead>

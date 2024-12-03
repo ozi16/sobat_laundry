@@ -55,13 +55,13 @@ if (isset($_GET['delete'])) {
                                     </td>
                                     <td>
                                         <a href="?pg=tambah-trans&detail=<?php echo $row_trans['id'] ?>">
-                                            <span class="tf-icon btn btn-primary bx bx-show"></span>
+                                            <span class="tf-icon btn btn-primary bx bx-show">Detail</span>
                                         </a> |
-                                        <a target="_blank" href="?pg=print.php&id=<?php echo $row_trans['id'] ?>">
-                                            <span class="tf-icon btn btn-success bx bx-printer"></span>
+                                        <a target="_blank" href="inc/print.php?id=<?php echo $row_trans['id'] ?>">
+                                            <span class="tf-icon btn btn-success bx bx-printer">Print</span>
                                         </a> |
                                         <a onclick="return confirm('Apakah antum yakin akan menghapus data ini??')" href="?pg=trans-order&delete=<?php echo $row_trans['id'] ?>">
-                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px"></span>
+                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px">Hapus</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -73,5 +73,5 @@ if (isset($_GET['delete'])) {
             </div>
         </div>
     </div>
-    
+
 </div>

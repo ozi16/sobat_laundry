@@ -1,9 +1,10 @@
 <?php
-
+session_start();
+include "../database/koneksi.php";
 $id = isset($_GET['id']) ? $_GET['id'] : "";
 
 // QUERY MENGAMBIL DATA DETAIL PENJUAL DAN PENJUALAN
-$queryDetail = mysqli_query($koneksi, "SELECT trans_order.id, type_of_service.service_name, type_of_service.price , trans_order_detail.* FROM trans_order_detail LEFT JOIN trans_order ON trans_order.id = trans_order_detail.id_order LEFT JOIN type_of_service ON type_of_service.id = trans_order_detail.id_service WHERE trans_order_detail.id_order='$id'");
+$queryDetail = mysqli_query($koneksi, "SELECT trans_order.id, type_of_service.service_name, type_of_service.price , trans_order_detail.*,trans_order.* FROM trans_order_detail LEFT JOIN trans_order ON trans_order.id = trans_order_detail.id_order LEFT JOIN type_of_service ON type_of_service.id = trans_order_detail.id_service WHERE trans_order_detail.id_order='$id'");
 $row = [];
 while ($rowDetail = mysqli_fetch_assoc($queryDetail)) {
     $row[] = $rowDetail;
@@ -111,11 +112,11 @@ while ($rowDetail = mysqli_fetch_assoc($queryDetail)) {
 
     <div class="struk">
         <div class="struk-header">
-            <h1>Toko Aja</h1>
-            <p>jl.Bekasi Timur, Jaktim</p>
+            <h1>Sobat laundry</h1>
+            <p>jl.jakarta Timur, Jaktim</p>
             <p>Telp: 021-123456789</p>
         </div>
-        <div class="struk-body">
+        <div class="struk-body mt-3">
             <table>
                 <thead>
                     <tr>
@@ -136,18 +137,19 @@ while ($rowDetail = mysqli_fetch_assoc($queryDetail)) {
                     <?php endforeach ?>
                 </tbody>
             </table>
-            <!-- <div class="total">
+
+            <div class="total">
                 <span>Total : </span>
-                <span><?php echo "Rp ." . number_format($row[0]['total_harga']) ?></span>
+                <span><?php echo "Rp ." . number_format($row[0]['total_price']) ?></span>
             </div>
             <div class="payment">
                 <span>Bayar : </span>
-                <span><?php echo "Rp ." . number_format($row[0]['nominal_bayar']) ?></span>
+                <span><?php echo "Rp ." . number_format($row[0]['order_pay']) ?></span>
             </div>
             <div class="change">
                 <span>Kembali : </span>
-                <span><?php echo "Rp ." . number_format($row[0]['kembalian']) ?></span>
-            </div> -->
+                <span><?php echo "Rp ." . number_format($row[0]['order_change']) ?></span>
+            </div>
         </div>
         <div class="struk-footer">
             <p>Terima Kasih Atas Kunjungan Anda</p>

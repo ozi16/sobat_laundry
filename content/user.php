@@ -44,11 +44,11 @@ if (isset($_GET['delete'])) {
                                     <td><?php echo $rowUser['name'] ?></td>
                                     <td><?php echo $rowUser['email'] ?></td>
                                     <td>
-                                        <a href="?pg=tambah-user?edit=<?php echo $rowUser['id'] ?>">
-                                            <span class="tf-icon btn btn-success bx bx-pencil"></span>
+                                        <a href="?pg=tambah-user&edit=<?php echo $rowUser['id'] ?>">
+                                            <span class="tf-icon btn btn-success bx bx-pencil">Edit</span>
                                         </a> |
                                         <a onclick="return confirm('Apakah antum yakin akan menghapus data ini??')" href="?pg=user&delete=<?php echo $rowUser['id'] ?>">
-                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px"></span>
+                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px">Hapus</span>
                                         </a>
                                     </td>
                                 </tr>

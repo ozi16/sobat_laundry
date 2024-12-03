@@ -42,10 +42,10 @@ if (isset($_GET['delete'])) {
                                     <td><?php echo $rowLevel['level_name'] ?></td>
                                     <td>
                                         <a href="?pg=tambah-level&edit=<?php echo $rowLevel['id'] ?>">
-                                            <span class="tf-icon btn btn-success bx bx-pencil"></span>
+                                            <span class=" btn btn-success ">Edit</span>
                                         </a> |
                                         <a onclick="return confirm('Apakah antum yakin akan menghapus data ini??')" href="?pg=level.php&delete=<?php echo $rowLevel['id'] ?>">
-                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px"></span>
+                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px">Hapus</span>
                                         </a>
                                     </td>
                                 </tr>

@@ -46,10 +46,10 @@ if (isset($_GET['delete'])) {
                                     <td><?php echo $rowCustomer['adress'] ?></td>
                                     <td>
                                         <a href="?pg=tambah-customer&edit=<?php echo $rowCustomer['id'] ?>">
-                                            <span class="tf-icon btn btn-success bx bx-pencil"></span>
+                                            <span class="tf-icon btn btn-success bx bx-pencil">Edit</span>
                                         </a> |
                                         <a onclick="return confirm('Apakah antum yakin akan menghapus data ini??')" href="?pg=customer&delete=<?php echo $rowCustomer['id'] ?>">
-                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px"></span>
+                                            <span class="tf-icon btn btn-danger bx bx-trash bx-12px">Hapus</span>
                                         </a>
                                     </td>
                                 </tr>

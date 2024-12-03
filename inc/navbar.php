@@ -3,16 +3,8 @@
     <div class="container-fluid">
         <nav
             class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <button type="submit" class="btn btn-search pe-1">
-                        <i class="fa fa-search search-icon"></i>
-                    </button>
-                </div>
-                <input
-                    type="text"
-                    placeholder="Search ..."
-                    class="form-control" />
+            <div class="logo">
+                <h1>Sobat Laundry</h1>
             </div>
         </nav>
 
@@ -284,7 +276,7 @@
                     </div>
                     <span class="profile-username">
                         <span class="op-7">Hi,</span>
-                        <span class="fw-bold"><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : '' ?></span>
+                        <span class="fw-bold"><?php echo $_SESSION['NAME'] ?></span>
                     </span>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -299,7 +291,7 @@
                                 </div>
                                 <div class="u-text">
                                     <h4><?php  ?></h4>
-                                    <p class="text-muted">hello@example.com</p>
+                                    <p class="text-muted"><?php echo $_SESSION['EMAIL'] ?></p>
                                     <a
                                         href="profile.html"
                                         class="btn btn-xs btn-secondary btn-sm">View Profile</a>
